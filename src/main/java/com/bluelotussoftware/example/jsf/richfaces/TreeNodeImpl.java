@@ -34,8 +34,8 @@ import org.richfaces.model.TreeNode;
 
 /**
  * This {@code TreeNode} implementation is based on the work done by the JBoss
- * RichFaces team for RichFaces 3 and 4. It is a simple practical implementation that
- * uses a generic type {@code T} to hold the data for the node.
+ * RichFaces team for RichFaces 3 and 4. It is a simple practical implementation
+ * that uses a generic type {@code T} to hold the data for the node.
  *
  * @author Nick Belaevski
  * @author John Yeary
@@ -116,5 +116,9 @@ public class TreeNodeImpl<T> implements TreeNode, Serializable {
         } else {
             throw new ClassCastException("The child is not a TreeNodeImpl<T>class object.");
         }
+    }
+
+    public LinkedHashMap<Object, TreeNodeImpl<T>> getChildren() {
+        return children;
     }
 }
