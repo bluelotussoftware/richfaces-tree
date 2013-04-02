@@ -7,16 +7,12 @@
       >
     <h:head>
         <title>&lt;rich:tree /&gt; using &lt;rich:treeModelRecursiveAdaptor /&gt; Example</title>
-        <style type="text/css">
-            .rf-trn-sel {
-                background-color:  blue;
-            }
-        </style>
+        <h:outputStylesheet name="default.css" library="css"/>
     </h:head>
     <h:body>
         <h:form id="form1">
             <h1>
-                <h:outputText id="outputText1" value="TreeModelRecursiveAdaptor Model Implementation using org.richfaces.model.TreeNodeImpl Nodes"/>
+                <h:outputText id="outputText1" value="TreeModelRecursiveAdaptor Model Implementation using TypeTreeNode Nodes"/>
             </h1>
             <rich:messages id="messages" ajaxRendered="true"/>
             <br/>
@@ -27,17 +23,20 @@
                        selectionType="ajax"
                        selectionChangeListener="#{treeBean.processTreeSelectionChange}">
 
-                <rich:treeModelRecursiveAdaptor roots="#{treeBean.customNodes}" nodes="#{node.children}"/>
-
-                <rich:treeNode id="treeNode1"
-                               iconCollapsed="#{resource['images:node16x16.png']}"
-                               iconExpanded="#{resource['images:node-select16x16.png']}"
-                               iconLeaf="#{resource['images:document-node16x16.png']}">  
-                    <h:panelGrid id="panelGrid1" columns="2">
-                        <h:outputText id="outputText2" value="Name: "/>
-                        <h:outputText id="outputText3" value="#{node.data}"/>
-                    </h:panelGrid>
-                </rich:treeNode>
+                <rich:treeModelRecursiveAdaptor roots="#{treeBean.customNodes}">
+                    <rich:treeNode id="treeNode1"
+                                   iconCollapsed="#{resource['images:node16x16.png']}"
+                                   iconExpanded="#{resource['images:node-select16x16.png']}"
+                                   iconLeaf="#{resource['images:document-node16x16.png']}">  
+                        <h:panelGrid id="panelGrid1" columns="2">
+                            <h:outputText id="outputText2" value="Name: "/>
+                            <h:outputText id="outputText3" value="#{node.data}"/>
+                        </h:panelGrid>
+                    </rich:treeNode>
+                    <rich:treeModelAdaptor nodes="#{node.children}">
+                        <rich:treeNode>#{node.data}</rich:treeNode>
+                    </rich:treeModelAdaptor>
+                </rich:treeModelRecursiveAdaptor>
             </rich:tree>
             <br/>
             <br/>
