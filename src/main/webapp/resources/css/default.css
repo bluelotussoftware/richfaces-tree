@@ -1,0 +1,15 @@
+/* 
+    Document   : default
+    Created on : Apr 2, 2013, 8:17:42 AM
+    Author     : John Yeary <jyeary@bluelotussoftware.com>
+*/
+
+a,li {
+    font-size: 32px;
+}
+.rf-trn-lbl {
+    font-weight: bold;
+    font-style: italic;
+    color: blue;
+}
+
