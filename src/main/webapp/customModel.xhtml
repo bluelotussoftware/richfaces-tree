@@ -17,7 +17,7 @@
     <h:body>
         <h:form id="form1">
             <h1>
-                <h:outputText id="outputText1" value="ClassicTreeNodeDataModelImpl Model Implementation"/>
+                <h:outputText id="outputText1" value="Custom TreeNodesSequenceKeyModel Implementation"/>
             </h1>
             <rich:messages id="messages" ajaxRendered="true"/>
             <br/>
@@ -34,7 +34,7 @@
                                iconExpanded="#{resource['images:node-select16x16.png']}"
                                iconLeaf="#{resource['images:document-node16x16.png']}">
                     <h:panelGrid id="panelGrid1" columns="2">
-                        <h:outputText id="outputText2" value="Name: "/>
+                        <h:outputText id="outputText2" value="Data: "/>
                         <h:outputText id="outputText3" value="#{node.data}"/>
                     </h:panelGrid>
                 </rich:treeNode>
