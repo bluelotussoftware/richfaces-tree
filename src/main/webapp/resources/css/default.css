@@ -4,9 +4,10 @@
     Author     : John Yeary <jyeary@bluelotussoftware.com>
 */
 
-a,li {
-    font-size: 32px;
+a{
+    font-size: 16px;
 }
+
 .rf-trn-lbl {
     font-weight: bold;
     font-style: italic;
