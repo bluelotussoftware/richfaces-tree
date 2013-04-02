@@ -8,7 +8,9 @@
     <packaging>war</packaging>
     <name>richfaces-tree</name>
     <url>http://code.bluelotussoftware.com/richfaces-tree</url>
-
+    <description>
+A series of examples that demonstrate how to use the RichFaces tree component including custom node, and model implementations.
+    </description>
     <licenses>
         <license>
             <name>Lesser GPL 2.1</name>
