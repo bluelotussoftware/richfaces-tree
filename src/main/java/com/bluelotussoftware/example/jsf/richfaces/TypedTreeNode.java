@@ -43,6 +43,7 @@ import org.richfaces.model.TreeNode;
  */
 public class TypedTreeNode<T> implements TreeNode, Serializable {
 
+    private static final long serialVersionUID = -5451984693315442917L;
     private T data;
     private LinkedHashMap<Object, TypedTreeNode<T>> children = new LinkedHashMap<Object, TypedTreeNode<T>>();
     private List<Object> keys = new ArrayList<Object>();
