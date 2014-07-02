@@ -27,7 +27,7 @@ import java.util.Random;
 import java.util.UUID;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AbortProcessingException;
 import org.richfaces.component.UITree;
@@ -42,13 +42,13 @@ import org.richfaces.model.TreeNode;
  * @version 1.0
  */
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class TreeBean implements Serializable {
 
     private static final long serialVersionUID = 3096479824299598082L;
-    private ClassicTreeNodeDataModelImpl model;
-    private TreeNodesSequenceKeyModel<TypedTreeNode<String>> customModel;
-    private List<TypedTreeNode<String>> customNodes;
+    private final ClassicTreeNodeDataModelImpl model;
+    private final TreeNodesSequenceKeyModel<TypedTreeNode<String>> customModel;
+    private final List<TypedTreeNode<String>> customNodes;
     private TreeNode selectedNode;
 
     public TreeBean() {
@@ -115,7 +115,7 @@ public class TreeBean implements Serializable {
     }
 
     public void processTreeSelectionChange(TreeSelectionChangeEvent event) throws AbortProcessingException {
-        FacesContext.getCurrentInstance().addMessage(event.getComponent().getClientId(FacesContext.getCurrentInstance()), new FacesMessage("TreeSelectionChangeEvent FIRED"));
+        FacesContext.getCurrentInstance().addMessage(event.getComponent().getClientId(FacesContext.getCurrentInstance()), new FacesMessage("TreeSelectionChangeEvent: FIRED"));
         List<Object> selection = new ArrayList<Object>(event.getNewSelection());
         Object currentSelectionKey = selection.get(0);
         UITree tree = (UITree) event.getSource();
@@ -126,10 +126,10 @@ public class TreeBean implements Serializable {
     }
 
     public void selectionChanged(TreeSelectionChangeEvent event) {
-        FacesContext.getCurrentInstance().addMessage(event.getComponent().getClientId(FacesContext.getCurrentInstance()), new FacesMessage("TreeSelectionChangeEvent FIRED"));
+        FacesContext.getCurrentInstance().addMessage(event.getComponent().getClientId(FacesContext.getCurrentInstance()), new FacesMessage("TreeSelectionChangeEvent: FIRED"));
     }
 
     public void toggleChanged(TreeToggleEvent event) {
-        FacesContext.getCurrentInstance().addMessage(event.getComponent().getClientId(FacesContext.getCurrentInstance()), new FacesMessage("TreeToggleEvent FIRED"));
+        FacesContext.getCurrentInstance().addMessage(event.getComponent().getClientId(FacesContext.getCurrentInstance()), new FacesMessage("TreeToggleEvent: FIRED"));
     }
 }
