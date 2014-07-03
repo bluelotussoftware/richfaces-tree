@@ -61,7 +61,7 @@ public class TypedTreeNode<T> implements TreeNode, Serializable {
      *
      * @param data The data payload to be set.
      */
-    public TypedTreeNode(T data) {
+    public TypedTreeNode(final T data) {
         this.data = data;
     }
 
@@ -85,7 +85,7 @@ public class TypedTreeNode<T> implements TreeNode, Serializable {
      * list of keys, or -1 if this key list does not contain the element.
      */
     @Override
-    public int indexOf(Object key) {
+    public int indexOf(final Object key) {
         return keys.indexOf(key);
     }
 
@@ -126,7 +126,7 @@ public class TypedTreeNode<T> implements TreeNode, Serializable {
      * will be thrown.</p>
      */
     @Override
-    public void addChild(Object key, TreeNode child) {
+    public void addChild(final Object key, final TreeNode child) {
         addChild(-1, key, child);
     }
 
@@ -142,7 +142,7 @@ public class TypedTreeNode<T> implements TreeNode, Serializable {
      * will be thrown.</p>
      */
     @Override
-    public void insertChild(int idx, Object key, TreeNode child) {
+    public void insertChild(final int idx, final Object key, final TreeNode child) {
         addChild(idx, key, child);
     }
 
@@ -152,7 +152,7 @@ public class TypedTreeNode<T> implements TreeNode, Serializable {
      * @param key The key that identifies the child element to remove.
      */
     @Override
-    public void removeChild(Object key) {
+    public void removeChild(final Object key) {
         children.remove(key);
         keys.remove(key);
     }
@@ -174,7 +174,7 @@ public class TypedTreeNode<T> implements TreeNode, Serializable {
      *
      * @param data The data payload to set.
      */
-    public void setData(T data) {
+    public void setData(final T data) {
         this.data = data;
     }
 
@@ -199,7 +199,7 @@ public class TypedTreeNode<T> implements TreeNode, Serializable {
      * will be thrown.</p>
      */
     @SuppressWarnings("unchecked")
-    private void addChild(int idx, Object key, TreeNode child) {
+    private void addChild(final int idx, final Object key, final TreeNode child) {
         if (child instanceof TypedTreeNode) {
             if (idx != -1) {
                 keys.add(idx, key);
