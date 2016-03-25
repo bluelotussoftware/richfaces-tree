@@ -224,23 +224,54 @@ public class TypedTreeNode<T> implements TreeNode, Serializable {
         return children;
     }
 
+    /**
+     * This method will return the parent node if one is set.
+     *
+     * @return The immediate parent node of the current node, or {@code null} if
+     * it does not exist, or is not set.
+     */
     public TypedTreeNode getParent() {
         return parent;
     }
 
+    /**
+     * Sets the parent node of the current node.
+     *
+     * @param parent The node to set as the parent of the current node.
+     */
+    private void setParent(final TypedTreeNode parent) {
+        this.parent = parent;
+    }
+
+    /**
+     * This is {@code true} only if the node has no parent.
+     *
+     * @return {@code true} if it is a root node (has no parents), and
+     * {@code false} otherwise.
+     */
     public boolean isRoot() {
         return (parent == null);
     }
 
-    private void setParent(TypedTreeNode parent) {
-        this.parent = parent;
-    }
-
+    /**
+     * This determines if a node is currently expanded. This only applies to
+     * nodes which are not leaf nodes.
+     *
+     * @return {@code true} if expanded, and {
+     * @false} if the node is a leaf node, or not expanded.
+     */
     public boolean isExpanded() {
         return isLeaf() ? false : expanded;
     }
 
-    public void setExpanded(boolean expanded) {
+    /**
+     * Sets the current node to either expanded {@code true}, or collapsed
+     * {@code false}.
+     *
+     * @param expanded expanded {@code true}, or collapsed {@code false}. This
+     * has no effect on leaf nodes.
+     */
+    public void setExpanded(final boolean expanded) {
         this.expanded = expanded;
     }
 
