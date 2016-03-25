@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013 Blue Lotus Software, LLC.
+ * Copyright 2011-2016 Blue Lotus Software, LLC.
  * Copyright 2011-2013 John Yeary.
  *
  * JBoss, Home of Professional Open Source
@@ -22,7 +22,7 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-/*
+ /*
  *  $Id$
  */
 package com.bluelotussoftware.example.jsf.richfaces;
@@ -40,7 +40,7 @@ import org.richfaces.model.TreeNode;
  * @param <T> The {@literal Type} of the class.
  * @author Nick Belaevski
  * @author John Yeary
- * @version 1.1
+ * @version 1.2
  *
  */
 public class TypedTreeNode<T> implements TreeNode, Serializable {
@@ -49,6 +49,8 @@ public class TypedTreeNode<T> implements TreeNode, Serializable {
     private T data;
     private final LinkedHashMap<Object, TypedTreeNode<T>> children = new LinkedHashMap<>();
     private final List<Object> keys = new ArrayList<>();
+    private TypedTreeNode<T> parent;
+    private boolean expanded;
 
     /**
      * Default constructor
@@ -207,8 +209,9 @@ public class TypedTreeNode<T> implements TreeNode, Serializable {
                 keys.add(key);
             }
             children.put(key, (TypedTreeNode<T>) child);
+            ((TypedTreeNode) child).setParent(this);
         } else {
-            throw new ClassCastException("The child is not a TreeNodeImpl<T>class object.");
+            throw new ClassCastException("The child is not a TypedTreeNode<T> class object.");
         }
     }
 
@@ -220,4 +223,25 @@ public class TypedTreeNode<T> implements TreeNode, Serializable {
     public LinkedHashMap<Object, TypedTreeNode<T>> getChildren() {
         return children;
     }
+
+    public TypedTreeNode getParent() {
+        return parent;
+    }
+
+    public boolean isRoot() {
+        return (parent == null);
+    }
+
+    private void setParent(TypedTreeNode parent) {
+        this.parent = parent;
+    }
+
+    public boolean isExpanded() {
+        return isLeaf() ? false : expanded;
+    }
+
+    public void setExpanded(boolean expanded) {
+        this.expanded = expanded;
+    }
+
 }

@@ -15,5 +15,6 @@
         -->
         <org-netbeans-modules-projectapi.jsf_2e_language>JSP</org-netbeans-modules-projectapi.jsf_2e_language>
         <netbeans.hint.jdkPlatform>JDK_1.7</netbeans.hint.jdkPlatform>
+        <netbeans.hint.license>lgpl21</netbeans.hint.license>
     </properties>
 </project-shared-configuration>
