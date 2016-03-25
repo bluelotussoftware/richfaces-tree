@@ -17,11 +17,14 @@
  */
 package com.bluelotussoftware.example.jsf.richfaces;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Utility class to help with RichFaces Tree components.
  *
  * @author John Yeary <jyeary@bluelotussoftware.com>
- * @version 1.0
+ * @version 1.1
  */
 public class TreeUtils {
 
@@ -43,4 +46,27 @@ public class TreeUtils {
 
         return leaf;
     }
+
+    /**
+     * This method returns a list of nodes in order from the closest parent to
+     * furthest grand parent from the node provided.
+     *
+     * @param node The node to be examined.
+     * @return An empty list if the node has no parents, or a list of the
+     * parents of the current node from the closest to the furthest.
+     * @since 1.1
+     */
+    public static List<TypedTreeNode> getParents(TypedTreeNode node) {
+        List<TypedTreeNode> parents = new ArrayList<>();
+        if (node != null) {
+            TypedTreeNode tn = node.getParent();
+            while (tn != null) {
+                parents.add(tn);
+                tn = tn.getParent();
+                getParents(tn);
+            }
+        }
+        return parents;
+    }
+
 }
